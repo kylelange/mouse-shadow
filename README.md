@@ -1,24 +1,17 @@
-# _Local Storage_
+# _Mousemove Shadow Effect_
 
-#### _using the local storage inherent in browsers to persist state, May 5th_
+#### _using the x/y values to make a moving text shadow effect_
 
 #### By _**Kyle Lange**_
 
-![screenshot](local-screen.png)
+![screenshot](mouse-shadow-screen.png)
 
 
 ## Learnings
 
-* React.js-like persistent state on browser refresh by using localStorage
+* use the x/y values of a mousemove event
 
-* use the .innerHTML() function to stet up a React.js-like return.  Unlike react, though it does not reload only the single instance needed, but the whole return section.  In this case, all the up checkboxes.
-
-* persistent checkboxes by making each item an object with a key/value boolean - THEN each item gets pushed into an array of items.
-
-* checkboxes change value with a react-like:  this = !this toggle
-
-* uses a button to clear all entries from localStorage by .clear() and reloading the page with window.location.reload();
-
+* use some math with the offsetWidth and offsetHeight to center the travel of the shadow to the element
 
 
 ## Setup/Installation Requirements

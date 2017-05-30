@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mouse Shadow</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mouse Shadow</title>
+  </head>
+  <body>
 
-  <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
-  </div>
+    <div class="hero">
+      <h1 contenteditable>🔥WOAH!</h1>
+    </div>
 
-  <style>
-  html {
-    color:black;
-    font-family: sans-serif;
-  }
+    <style>
+    html {
+      color:black;
+      font-family: sans-serif;
+    }
 
-  .hero {
-    min-height: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color:black;
-  }
+    .hero {
+      min-height: 100vh;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      color:black;
+    }
 
-  h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 100px;
-  }
-  </style>
+    h1 {
+      text-shadow: 10px 10px 0 rgba(0,0,0,1);
+      font-size: 100px;
+    }
+    </style>
 
-<script>
-</script>
-</body>
+  <script>
+  const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1');
+  //the walk (distance the shadow should travel)
+  const walk = 50; //px
+
+  function shadow(e) {
+    const width = hero.offsetWidth;
+    const height = hero.offsetHeight;
+    //OR deconstructed ES6: const { offsetWidth: width, offsetHeight: height} = hero;
+    let { offsetX: x, offsetY: y} = e;
+    //watch out for child elements of the element you selected:  mousemove
+    //will also give you an x/y for that child that is for itself - rather than the whole window
+    //CHECK IT OUT HERE: console.log(this, e.target);
+
+    if( this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+    const xWalk = Math.round(( x / width * walk) - (walk / 2));
+    const yWalk = Math.round(( y / height * walk) - (walk / 2));
+    console.log(xWalk, yWalk);
+    text.style.textShadow = `${xWalk}px ${yWalk}px 10px rgba(42, 89, 242, 0.5)`;
+    //you can add more to the backticks like so:
+    // `${xWalk * -1}px ${yWalk}px 10px rgba(42, 89, 242, 0.5)`
+  };
+
+  hero.addEventListener('mousemove', shadow);
+  </script>
+  </body>
 </html>
