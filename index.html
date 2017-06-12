@@ -7,7 +7,7 @@
   <body>
 
     <div class="hero">
-      <h1 contenteditable>🔥GADZOOKS!</h1>
+      <h1 contenteditable>🔥WOAH!</h1>
     </div>
 
     <style>
@@ -34,7 +34,7 @@
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
   //the walk (distance the shadow should travel)
-  const walk = 20; //px
+  const walk = 200; //px
 
   function shadow(e) {
     const width = hero.offsetWidth;
@@ -52,7 +52,7 @@
     const xWalk = Math.round(( x / width * walk) - (walk / 2));
     const yWalk = Math.round(( y / height * walk) - (walk / 2));
     console.log(xWalk, yWalk);
-    text.style.textShadow = `${xWalk}px ${yWalk}px 10px rgba(255, 111, 18, 0.5)`;
+    text.style.textShadow = `${xWalk}px ${yWalk}px 10px rgba(42, 89, 242, 0.5)`;
     //you can add more to the backticks like so:
     // `${xWalk * -1}px ${yWalk}px 10px rgba(42, 89, 242, 0.5)`
   };
